@@ -11,7 +11,9 @@ function UsarContexto(props) {
   const { children } = props;
   //Estado incial
   const estadoInicial = {
-    curriculums: [{ nombre: "Gero", descripcion: "Nada", url: "", img: "" }],
+    curriculums: [
+      { nombre: "Gero", descripcion: "Nada", url: "", img: "", intro: "" },
+    ],
     carrito: [],
   };
 

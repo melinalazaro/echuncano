@@ -7,6 +7,7 @@ import Somos from "../contenedores/Somos";
 import Layout from "../componentes/Layout";
 import { initializeApp } from "firebase/app";
 import UsarContexto from "../contexto/UsarContexto";
+import CV from "../contenedores/CV";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCIPNtt7iEUC4Gf5FDWY-S9Wvhpfl1oRY8",
@@ -32,7 +33,7 @@ function App() {
             <Route path="/" element={<PHome />}></Route>
             <Route path="/cliente" element={<EPersonal />}></Route>
             <Route path="/productos" element={<Productos />}></Route>
-            <Route path="/productos/*" element={<Productos />}></Route>
+            <Route path="/productos/*" element={<CV />}></Route>
             <Route path="/somos" element={<Somos />}></Route>
           </Routes>
         </Layout>

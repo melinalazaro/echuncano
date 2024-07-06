@@ -1,7 +1,8 @@
+import style from "../assets/estylos/Footer.module.css";
 function Footer() {
   return (
     <>
-      <footer>
+      <footer className={style.footer}>
         <p>CopyRigth @Yomeliflua</p>
       </footer>
     </>

@@ -1,6 +1,11 @@
 import style from "../assets/estylos/Card.module.css";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import Contexto from "../contexto/Contexto";
 
-function Card() {
+function Card(props) {
+  const { nombre, descripcion, img, intro } = props;
+
   return (
     <>
       <div className={style.contCard}>
@@ -9,11 +14,13 @@ function Card() {
           alt=""
           className={style.imgCard}
         />
-        <h4>Titulo </h4>
-        <p>Descripcion del producto</p>
+        <h4> {nombre} </h4>
+        <p className={style.txtIntro}> {intro} </p>
         <div className={style.divBtn}>
-          <button className={style.btnCard}>Ver detalle</button>
-          <button className={style.btnCard}>Comprar</button>
+          <button className={style.btnCard}>
+            <Link to={"/productos/*"}>Ver Detalle</Link>
+          </button>
+          <button className={style.btnCard}>Agregar al carrito</button>
         </div>
       </div>
     </>
