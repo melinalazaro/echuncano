@@ -11,7 +11,7 @@ function UsarContexto(props) {
   const { children } = props;
   //Estado incial
   const estadoInicial = {
-    curriculums: [{ nombre: "", descripcion: "", url: "" }],
+    curriculums: [{ nombre: "Gero", descripcion: "Nada", url: "", img: "" }],
     carrito: [],
   };
 
@@ -24,9 +24,9 @@ function UsarContexto(props) {
     );
     dispatch({
       type: "TRAER CV",
-      payload: res,
+      payload: res.data.results,
     });
-    console.log("traer CV", res.data);
+    console.log("traer CV", res.data.results);
   };
   useEffect(() => {
     //uso UE porque chupo info de afuera
