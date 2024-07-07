@@ -17,6 +17,7 @@ function UsarContexto(props) {
 
   const [state, dispatch] = useReducer(Reducer, estadoInicial);
 
+  //funcion para traer la base de datos desde firebase.
   const traerCurriculums = async () => {
     const res = await axios.get(
       "https://ecomercechuncano-default-rtdb.europe-west1.firebasedatabase.app/CV.json"
@@ -36,6 +37,7 @@ function UsarContexto(props) {
     });
     console.log("traer CV", res.data.results);
   };
+
   useEffect(() => {
     //uso UE porque chupo info de afuera
     onValue(referencia, (snapshot) => {
@@ -44,16 +46,35 @@ function UsarContexto(props) {
     traerCurriculums();
   }, []);
 
-  const getCurriculumById = (id) => {
-    if (curriculum.id == id) {
-      return (
-        <>
-          <div></div>
-        </>
-      );
+  //Funcion para ver el detalle del producto (no me anda)
+  const getCurriculumById = (id) => {};
+
+  //Funciones del Carrito de Compras
+
+  //funcion para agregar al carrito
+  const agregarCarrito = (item) => {
+    console.log("me agrego al carrito", item);
+    const existeCarrito = state.carrito.some(
+      (producto) => producto.nombre === item.nombre
+    );
+    if (!existeCarrito) {
+      dispatch({
+        type: "AGREGAR_CV_CARRITO",
+        payload: item,
+      });
+      console.log("carrito", state.carrito);
+    } else {
+      alert("ya agregaste este producto a tu carriro");
     }
   };
 
+  //funcion para eliminar del carrito
+  const eliminarDelCarrito = (nombre) => {
+    dispatch({
+      type: "ELIMINAR_CV_CARRITO",
+      payload: { nombre },
+    });
+  };
   return (
     <>
       <Contexto.Provider
@@ -61,6 +82,8 @@ function UsarContexto(props) {
           onValue,
           traerCurriculums,
           getCurriculumById,
+          agregarCarrito,
+          eliminarDelCarrito,
           curriculums: state.curriculums,
           carrito: state.carrito,
         }}

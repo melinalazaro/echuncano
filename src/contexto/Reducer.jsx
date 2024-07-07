@@ -1,7 +1,7 @@
 //TYPOS
 //declaro todas las constancia con los tipos de caso que voy a tener
 const TRAER_CV = "TRAER CV";
-const GUARDAR_CV_CARRITO = "GUARDAR_CV_CARRITO";
+const AGREGAR_CV_CARRITO = "AGREGAR_CV_CARRITO";
 const ELIMINAR_CV_CARRITO = "ELIMINAR_CV_CARRITO";
 const MOSTRAR_CV_COMPRADOS = "MOSTRAR_CV_COMPRADOS";
 const CREAR_USUARIO = "CREAR_USUARIO";
@@ -14,13 +14,13 @@ export default function Reducer(state, action) {
   switch (type) {
     case TRAER_CV:
       return { ...state, curriculums: payload };
-    case GUARDAR_CV_CARRITO:
+    case AGREGAR_CV_CARRITO:
       return { ...state, carrito: [...state.carrito, payload] };
     case ELIMINAR_CV_CARRITO:
       return {
         ...state,
         carrito: state.carrito.filter(
-          (curriculums) => curriculums.nombre !== payload.nombre
+          (curriculum) => curriculum.nombre !== payload.nombre
         ),
       };
     default:

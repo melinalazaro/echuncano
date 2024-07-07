@@ -30,6 +30,11 @@ function Header() {
                   Mi Cuenta
                 </Link>
               </li>
+              <li className={style.elementoNav}>
+                <Link className={style.textNav} to="/carrito">
+                  Mi Carrito
+                </Link>
+              </li>
             </div>
           </ul>
         </nav>

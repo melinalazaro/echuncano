@@ -8,6 +8,7 @@ import Layout from "../componentes/Layout";
 import { initializeApp } from "firebase/app";
 import UsarContexto from "../contexto/UsarContexto";
 import CV from "../contenedores/CV";
+import Carrito from "../contenedores/Carrito";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCIPNtt7iEUC4Gf5FDWY-S9Wvhpfl1oRY8",
@@ -26,7 +27,7 @@ const app = initializeApp(firebaseConfig);
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="echuncano">
       <UsarContexto>
         <Layout>
           <Routes>
@@ -35,6 +36,7 @@ function App() {
             <Route path="/productos" element={<Productos />}></Route>
             <Route path="/productos/*" element={<CV />}></Route>
             <Route path="/somos" element={<Somos />}></Route>
+            <Route path="/carrito" element={<Carrito />}></Route>
           </Routes>
         </Layout>
       </UsarContexto>
