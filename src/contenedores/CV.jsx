@@ -1,15 +1,25 @@
-import { useLocation } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
+import React from "react";
+import { useContext } from "react";
+import { useParams } from "react-router-dom";
 import Contexto from "../contexto/Contexto";
-import axios from "axios";
 import style from "../assets/estylos/CV.module.css";
 
-function CV() {
-  const { curriculums, traerCurriculums } = useContext(Contexto);
+function CV(props) {
+  const { id } = useParams();
+  const { nombre, descripcion, img, intro } = props;
 
-  useEffect(() => {
-    traerCurriculums();
-  }, []);
+  const { getCurriculumById } = useContext(Contexto);
+  const curriculum = getCurriculumById(id);
+
+  if (!curriculum) {
+    return (
+      <>
+        <div>
+          <p>No se han encontado CV</p>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -20,10 +30,12 @@ function CV() {
           className={style.imgDescr}
         />
         <div className={style.titulo}>
-          <h4>CV Titulo caca</h4>
+          <h4>CV Titulo {nombre} </h4>
         </div>
         <div className={style.descripcion}>
-          <p className={style.txtDescrip}>Descripcion del producto</p>
+          <p className={style.txtDescrip}>
+            Descripcion del producto {descripcion}{" "}
+          </p>
           <div className={style.botonera}>
             <button className={style.btnCard}>Agregar al carrito</button>
           </div>

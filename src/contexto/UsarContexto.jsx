@@ -11,22 +11,28 @@ function UsarContexto(props) {
   const { children } = props;
   //Estado incial
   const estadoInicial = {
-    curriculums: [
-      { nombre: "Gero", descripcion: "Nada", url: "", img: "", intro: "" },
-    ],
+    curriculums: [],
     carrito: [],
   };
 
   const [state, dispatch] = useReducer(Reducer, estadoInicial);
 
   const traerCurriculums = async () => {
-    console.log("me ejecuto:");
     const res = await axios.get(
       "https://ecomercechuncano-default-rtdb.europe-west1.firebasedatabase.app/CV.json"
     );
+    const datita = res.data.results;
+    console.log("que me trae datita", datita);
+
+    const curriculums = datita.map((curriculum) => ({
+      id: curriculum.id,
+      ...curriculum,
+    }));
+
+    console.log("Currículums mapeados:", curriculums);
     dispatch({
       type: "TRAER CV",
-      payload: res.data.results,
+      payload: curriculums,
     });
     console.log("traer CV", res.data.results);
   };
@@ -34,10 +40,13 @@ function UsarContexto(props) {
     //uso UE porque chupo info de afuera
     onValue(referencia, (snapshot) => {
       const data = snapshot.val();
-      console.log("lo que me trae la ref", data);
     });
     traerCurriculums();
   }, []);
+
+  const getCurriculumById = (id) => {
+    return state.curriculums.find((curriculum) => curriculum.id == id);
+  };
 
   return (
     <>
@@ -45,6 +54,7 @@ function UsarContexto(props) {
         value={{
           onValue,
           traerCurriculums,
+          getCurriculumById,
           curriculums: state.curriculums,
           carrito: state.carrito,
         }}

@@ -7,7 +7,7 @@ function Productos() {
   const { curriculums, traerCurriculums } = useContext(Contexto);
   useEffect(() => {
     traerCurriculums();
-    console.log("soy USeEFECT", curriculums);
+    console.log("productos recibidos", curriculums);
   }, []);
 
   return (
