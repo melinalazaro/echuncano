@@ -7,3 +7,27 @@
   justify-content: center;
   flex-direction: column;
 }
+.divDescrip {
+  width: 100%;
+  height: 400px;
+  margin: 0px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.divTxt {
+  width: 500px;
+  height: 300px;
+}
+.divImg {
+  width: 350px;
+  height: 350px;
+}
+.imgHome {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}

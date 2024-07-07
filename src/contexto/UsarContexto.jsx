@@ -45,7 +45,13 @@ function UsarContexto(props) {
   }, []);
 
   const getCurriculumById = (id) => {
-    return state.curriculums.find((curriculum) => curriculum.id == id);
+    if (curriculum.id == id) {
+      return (
+        <>
+          <div></div>
+        </>
+      );
+    }
   };
 
   return (

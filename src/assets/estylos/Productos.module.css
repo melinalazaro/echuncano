@@ -1,6 +1,6 @@
-.main {
+.divProduct {
   width: 100%;
-  height: 100vh;
+  height: 96vh;
   display: flex;
   align-items: center;
   align-content: center;
@@ -8,9 +8,40 @@
   flex-direction: column;
 }
 .ulCards {
+  height: 100vh;
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
   flex-direction: row;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 30px;
+}
+.headerProducto {
+  margin: 0 auto;
+  margin-top: 80px;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 0px;
+  background: #5d73e2;
+  color: aliceblue;
+  padding-left: 30px;
+}
+.imgHeader {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  padding: 0px;
+  margin: 0px;
+  aspect-ratio: 8/5;
+  object-fit: cover;
 }

@@ -8,11 +8,7 @@ function Card(props) {
   return (
     <>
       <div className={style.contCard}>
-        <img
-          src="https://static-cse.canva.com/blob/1105036/createresume.png"
-          alt=""
-          className={style.imgCard}
-        />
+        <img src={img} alt="" className={style.imgCard} />
         <h4> {nombre} </h4>
         <p className={style.txtIntro}> {intro} </p>
         <p>{precio} </p>
