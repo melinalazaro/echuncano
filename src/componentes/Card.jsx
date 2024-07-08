@@ -6,10 +6,22 @@ import Contexto from "../contexto/Contexto";
 
 function Card(props) {
   const { nombre, descripcion, img, intro, precio } = props;
-  const { agregarCarrito } = useContext(Contexto);
+  const { agregarCarrito, carrito } = useContext(Contexto);
   //escucha evento funcion agregar Carrito
   const handleCarrito = () => {
-    agregarCarrito({ nombre, descripcion, img, intro, precio });
+    //esto convierte a mi precio en un numero
+    const precioNumerico = parseFloat(precio) || 0;
+    // en el atributo precio le indico que debe ser el precio numerico
+    agregarCarrito({ nombre, descripcion, img, intro, precio: precioNumerico });
+    if (carrito) {
+      return carrito.map((item) => {
+        if (item.nombre == nombre) {
+          return { ...item, quantity: item.quantity + 1 };
+        } else {
+          return item;
+        }
+      });
+    }
   };
   return (
     <>

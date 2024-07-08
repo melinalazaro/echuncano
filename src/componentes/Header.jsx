@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import style from "../assets/estylos/Header.module.css";
+import { useContext, useState } from "react";
+import Contexto from "../contexto/Contexto";
 function Header() {
+  const { carrito, curriculum } = useContext(Contexto);
+  const quantity = carrito.length;
+
   return (
     <>
       <header>
@@ -32,7 +37,16 @@ function Header() {
               </li>
               <li className={style.elementoNav}>
                 <Link className={style.textNav} to="/carrito">
-                  Mi Carrito
+                  <div className={style.divIconCarrito}>
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png"
+                      alt=""
+                      className={style.iconCarrito}
+                    />
+                    <div className={style.divQProductos}>
+                      <p className={style.txtNCarrito}>{quantity} </p>
+                    </div>
+                  </div>
                 </Link>
               </li>
             </div>

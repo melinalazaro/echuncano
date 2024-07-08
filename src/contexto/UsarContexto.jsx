@@ -1,5 +1,5 @@
 import Contexto from "./Contexto";
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import Reducer from "./Reducer";
 import axios from "axios";
 import { getDatabase, ref, onValue } from "firebase/database";
@@ -15,6 +15,7 @@ function UsarContexto(props) {
     carrito: [],
   };
 
+  const { contProducto, setContProducto } = useState();
   const [state, dispatch] = useReducer(Reducer, estadoInicial);
 
   //funcion para traer la base de datos desde firebase.

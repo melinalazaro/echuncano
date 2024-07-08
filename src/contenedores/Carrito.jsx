@@ -1,6 +1,7 @@
 import style from "../assets/estylos/Carrito.module.css";
 import { useContext } from "react";
 import Contexto from "../contexto/Contexto";
+import TotalCompra from "../componentes/TotalCompra";
 function Carrito() {
   const { carrito, eliminarDelCarrito } = useContext(Contexto);
 
@@ -40,8 +41,7 @@ function Carrito() {
             </ul>
           </div>
           <div>
-            <h4>Total a pagar </h4>
-            <h6>$44</h6>
+            <TotalCompra></TotalCompra>
           </div>
         </div>
       </section>
