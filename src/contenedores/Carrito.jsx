@@ -20,12 +20,24 @@ function Carrito() {
             <ul className={style.ulCarrito}>
               {carrito.length > 0 ? (
                 carrito.map((curriculum) => (
-                  <li key={curriculum.nombre}>
-                    <div className={style.liCarrito}>
-                      <h3 className={style.nombreElemento}>
+                  <li key={curriculum.nombre} className={style.liCarrito}>
+                    <div className={style.groupTxtElemento}>
+                      <img
+                        src={curriculum.img}
+                        alt=""
+                        width={"60px"}
+                        height={"70"}
+                      />
+                      <h5 className={style.nombreElemento}>
                         {curriculum.nombre}
-                      </h3>
-                      <p>{curriculum.precio} </p>
+                      </h5>
+                      <p className={style.precioElemento}>
+                        {" "}
+                        $ {curriculum.precio}{" "}
+                      </p>
+                    </div>
+
+                    <div className={style.groupBtnElemento}>
                       <button
                         onClick={() => handleEliminar(curriculum.nombre)}
                         className={style.btnEliminar}
@@ -40,9 +52,9 @@ function Carrito() {
               )}
             </ul>
           </div>
-          <div>
-            <TotalCompra></TotalCompra>
-          </div>
+        </div>
+        <div className={style.totalCarrito}>
+          <TotalCompra></TotalCompra>
         </div>
       </section>
     </>

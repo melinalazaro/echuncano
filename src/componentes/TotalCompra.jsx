@@ -13,8 +13,10 @@ function TotalCompra() {
   );
   return (
     <div className={style.contTotal}>
-      <h4>Total a pagar: </h4>
-      <h6> {total} $</h6>
+      <div className={style.contTxtTotal}>
+        <h4 className={style.tituloTotal}>Total a pagar: </h4>
+        <h4> {total} $</h4>
+      </div>
       <button className={style.btnEliminar}>Pagar</button>
     </div>
   );
