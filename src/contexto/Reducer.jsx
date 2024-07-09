@@ -23,6 +23,24 @@ export default function Reducer(state, action) {
           (curriculum) => curriculum.nombre !== payload.nombre
         ),
       };
+
+    //estos son los cases para el loguin
+    //Debo marcar los estados y las acciones por ejemplo, en crear usuarios lo que
+    // quiero que haga es que me cree un usuario y se lo agregue al estado de usuario
+    // El estado unicial de usuario es null o vacio
+    // En el caso de loguin o deslogueo lo que indico es el estado loguin false o true segun corresponda
+    // si es logueado, el paylod sera el usuario que le indico.
+    // si es deslogueado sera usuario null
+    case CREAR_USUARIO:
+      return {
+        ...state,
+        usuarios: [...state.usuarios, payload],
+      };
+    case LOGIN_USUARIO:
+      return { ...state, logueado: true, usuario: payload };
+    case DESLOGUEAR_USUARIO:
+      return { ...state, logueado: false, usuario: null };
+
     default:
       return state;
   }

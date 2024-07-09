@@ -2,6 +2,7 @@ import style from "../assets/estylos/Productos.module.css";
 import Card from "../componentes/Card";
 import { useEffect, useContext } from "react";
 import Contexto from "../contexto/Contexto";
+import Header from "../componentes/Header";
 
 function Productos() {
   const { curriculums, traerCurriculums } = useContext(Contexto);
