@@ -18,17 +18,14 @@ function UsarContexto(props) {
   const auth = getAuth();
   const [email, setEmail] = useState(""); //ambos son vacios para guardar los values con los set
   const [pass, setPass] = useState("");
-
-  const { verifLog, guardarUsuario } = props;
+  const { logueado, setLogueado } = useState(false); // Esto formaria parte del estado inicial
+  const { verifLog } = props;
 
   //Estado incial
   const estadoInicial = {
     curriculums: [],
     carrito: [],
     // estos estados son los iniciales para el logueo y deslogueo
-    logueado: false,
-    usuario: null,
-    usuarios: [],
   };
 
   const [state, dispatch] = useReducer(Reducer, estadoInicial);
@@ -92,61 +89,35 @@ function UsarContexto(props) {
 
   //funciones de Logueo y Deslogueo
 
-  //A
-  const crearUsuario = async (email, pass) => {
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        pass
-      );
-      const newUser = {
-        email: userCredential.user.email,
-        uid: userCredential.user.uid,
-        displayName: userCredential.user.displayName,
-      };
-      dispatch({
-        type: "CREAR_USUARIO",
-        payload: newUser, // Aquí puedes usar los datos del usuario según tu estructura
-      });
-    } catch (error) {
-      alert("Error al crear usuario: " + error.message);
-      console.error("Error al crear usuario", error);
-    }
+  //metodo para guardar los usuarios en la base de datos de firebase
+  const guardarUsuario = (usuario) => {
+    console.log("guardo el usuario:", usuario);
+    const refUsuarios = ref(db, "usuarios/" + usuario.uid);
+    set(refUsuarios, usuario);
   };
 
-  const logueoUsuario = async (email, pass) => {
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        pass
-      );
-      dispatch({
-        type: "LOGIN_USUARIO",
-        payload: userCredential.user.email,
+  //Deberia probar con hacer la funcion crear un usuario con un set log .
+  const crearUsuario = () => {
+    createUserWithEmailAndPassword(auth, email, pass)
+      .then((userCredential) => {
+        // Signed up
+        const user = userCredential.user;
+        guardarUsuario({ email: user.email, uid: user.uid });
+        setLogueado(user);
+        // ...
+      })
+      .catch((error) => {
+        console.log("error de creacion de usuario", error.code);
+        alert("error de creacion de usuario", error.message);
+
+        // ..
       });
-    } catch (error) {
-      alert("Error al loguearse");
-      console.error("Error al loguearse", error);
-    }
   };
 
-  const desloguearUsuario = async () => {
-    try {
-      await signOut(auth);
-      dispatch({ type: "DESLOGUEAR_USUARIO" });
-    } catch (error) {
-      console.error("Error deslogueando usuario: ", error);
-    }
-  };
-  const guardarDatosUsuario = (e) => {
-    if (e.target.name == "usuario") {
-      setEmail(e.target.value);
-    } else {
-      setPass(e.target.value);
-    }
-  };
+  const logueoUsuario = () => {};
+
+  const desloguearUsuario = () => {};
+
   return (
     <>
       <Contexto.Provider
@@ -156,15 +127,16 @@ function UsarContexto(props) {
           getCurriculumById,
           agregarCarrito,
           eliminarDelCarrito,
-          guardarDatosUsuario,
+          guardarUsuario,
           crearUsuario,
           logueoUsuario,
           desloguearUsuario,
           curriculums: state.curriculums,
           carrito: state.carrito,
-          logueado: state.logueado,
-          usuario: state.usuario,
-          usuarios: state.usuarios,
+          logueado,
+          setLogueado,
+          setEmail,
+          setPass,
         }}
       >
         {children}

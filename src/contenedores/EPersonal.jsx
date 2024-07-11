@@ -4,7 +4,7 @@ import Logueado from "../componentes/Logueado";
 import { useContext } from "react";
 import Contexto from "../contexto/Contexto";
 function EPersonal() {
-  const { loguin } = useContext(Contexto);
+  const { logueado, setLogueado } = useContext(Contexto);
   return (
     <>
       <section className={style.main}>
@@ -17,7 +17,11 @@ function EPersonal() {
             height={"40px"}
           />
         </div>
-        {!loguin ? <Deslogueado></Deslogueado> : <Logueado></Logueado>}
+        {!logueado ? (
+          <Deslogueado verifLog={setLogueado}></Deslogueado>
+        ) : (
+          <Logueado></Logueado>
+        )}
       </section>
     </>
   );

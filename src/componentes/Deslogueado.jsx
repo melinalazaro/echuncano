@@ -6,16 +6,8 @@ import Contexto from "../contexto/Contexto";
 function Deslogueado(props) {
   const [crear, setCrear] = useState(false);
 
-  const {
-    crearUsuario,
-    logueoUsuario,
-    guardarDatosUsuario,
-
-    email,
-    pass,
-  } = useContext(Contexto);
-
-  const { verifLog } = props;
+  const { crearUsuario, setEmail, setPass, logueoUsuario } =
+    useContext(Contexto);
 
   const handleNoTengo = () => {
     setCrear(!crear);
@@ -23,19 +15,21 @@ function Deslogueado(props) {
   };
 
   const handleCrear = () => {
-    crearUsuario(email, pass);
+    crearUsuario();
   };
 
   const handleLog = () => {
-    logueoUsuario(email, pass);
+    logueoUsuario();
   };
 
-  const handleEmail = (e) => {
-    guardarDatosUsuario(e);
+  const handleText = (e) => {
+    if (e.target.name == "usuario") {
+      setEmail(e.target.value);
+    } else {
+      setPass(e.target.value);
+    }
   };
-  const handlePass = (e) => {
-    guardarDatosUsuario(e);
-  };
+
   return (
     <>
       <div className={style.contenedorCrarCuenta}>
@@ -48,14 +42,14 @@ function Deslogueado(props) {
                 name="usuario"
                 placeholder="Mi email"
                 className={style.imputLog}
-                onChange={handleEmail}
+                onChange={handleText}
               />
               <input
                 type="password"
                 name="contraseña"
                 placeholder="Mi contraseña"
                 className={style.imputLog}
-                onChange={handlePass}
+                onChange={handleText}
               />
               <button onClick={handleLog} className={style.btnDeslogueo}>
                 Logueate
@@ -71,14 +65,14 @@ function Deslogueado(props) {
                 name="usuario"
                 placeholder="Mi email"
                 className={style.imputLog}
-                onChange={handleEmail}
+                onChange={handleText}
               />
               <input
                 type="password"
                 name="contraseña"
                 placeholder="Mi contraseña"
                 className={style.imputLog}
-                onChange={handlePass}
+                onChange={handleText}
               />
               <button onClick={handleCrear} className={style.btnDeslogueo}>
                 Crear cuenta
