@@ -2,7 +2,7 @@ import Contexto from "./Contexto";
 import { useEffect, useReducer, useState } from "react";
 import Reducer from "./Reducer";
 import axios from "axios";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, set } from "firebase/database";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -18,7 +18,7 @@ function UsarContexto(props) {
   const auth = getAuth();
   const [email, setEmail] = useState(""); //ambos son vacios para guardar los values con los set
   const [pass, setPass] = useState("");
-  const { logueado, setLogueado } = useState(false); // Esto formaria parte del estado inicial
+  const [logueado, setLogueado] = useState(false); // Esto formaria parte del estado inicial
   const { verifLog } = props;
 
   //Estado incial
@@ -90,25 +90,27 @@ function UsarContexto(props) {
   //funciones de Logueo y Deslogueo
 
   //metodo para guardar los usuarios en la base de datos de firebase
-  const guardarUsuario = (usuario) => {
-    console.log("guardo el usuario:", usuario);
-    const refUsuarios = ref(db, "usuarios/" + usuario.uid);
-    set(refUsuarios, usuario);
+  const guardarUsuario = async (user) => {
+    console.log("guardo el user:", user);
+    const refUsuarios = ref(db, "usuarios/" + user.uid);
+    await set(refUsuarios, user);
+    console.log("esto me trae la refusuario", refUsuarios);
   };
 
   //Deberia probar con hacer la funcion crear un usuario con un set log .
   const crearUsuario = () => {
     createUserWithEmailAndPassword(auth, email, pass)
-      .then((userCredential) => {
-        // Signed up
+      .then(async (userCredential) => {
         const user = userCredential.user;
-        guardarUsuario({ email: user.email, uid: user.uid });
-        setLogueado(user);
+        console.log("lo que me trae user", user);
+        await guardarUsuario({ email: user.email, uid: user.uid });
+        setLogueado(true);
         // ...
       })
       .catch((error) => {
-        console.log("error de creacion de usuario", error.code);
-        alert("error de creacion de usuario", error.message);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(errorCode, errorMessage);
 
         // ..
       });

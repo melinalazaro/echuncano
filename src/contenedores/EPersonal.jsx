@@ -17,11 +17,7 @@ function EPersonal() {
             height={"40px"}
           />
         </div>
-        {!logueado ? (
-          <Deslogueado verifLog={setLogueado}></Deslogueado>
-        ) : (
-          <Logueado></Logueado>
-        )}
+        {!logueado ? <Deslogueado></Deslogueado> : <Logueado></Logueado>}
       </section>
     </>
   );

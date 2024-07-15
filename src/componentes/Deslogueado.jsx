@@ -18,9 +18,7 @@ function Deslogueado(props) {
     crearUsuario();
   };
 
-  const handleLog = () => {
-    logueoUsuario();
-  };
+  const handleLog = () => {};
 
   const handleText = (e) => {
     if (e.target.name == "usuario") {
