@@ -29,7 +29,7 @@ function Card(props) {
         <img src={img} alt="" className={style.imgCard} />
         <h4> {nombre} </h4>
         <p className={style.txtIntro}> {intro} </p>
-        <p>{precio} </p>
+        <p> $ {precio} </p>
         <div className={style.divBtn}>
           <button className={style.btnCard}>
             <Link to={"/productos/*"}>Ver Detalle</Link>

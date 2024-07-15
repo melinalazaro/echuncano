@@ -6,7 +6,7 @@
   display: flex;
   align-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
 }
 
 .navUl {
@@ -18,7 +18,7 @@
   align-content: center;
   align-items: center;
   justify-content: space-between;
-  background: peru;
+  background: #edeef8;
   position: absolute;
 }
 .contPaginas {
@@ -38,7 +38,7 @@
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 .textNav {
-  color: antiquewhite;
+  color: #f58172;
 }
 .divIconCarrito {
   width: 40px;
@@ -47,7 +47,7 @@
   align-items: center;
   align-content: center;
   justify-content: center;
-  background: antiquewhite;
+  background: #fde4ae;
   border-radius: 33px;
 }
 .iconCarrito {
@@ -76,4 +76,5 @@
   justify-content: center;
   align-items: center;
   align-content: center;
+  color: #edeef8;
 }

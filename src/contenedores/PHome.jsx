@@ -24,7 +24,7 @@ function PHome() {
 
           <div className={style.divImg}>
             <img
-              src="https://www.cvmaker.uk/static/238cd17064d47e59f3b9b80e516d5c4e/126f5/01_how-to-write-education-on-a-cv.png"
+              src="https://www.cvmaker.com.mx/shared/images/illustrations/active/blog-category/all.svg"
               alt=""
               className={style.imgHome}
             />

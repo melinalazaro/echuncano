@@ -16,6 +16,7 @@ function UsarContexto(props) {
   const referencia = ref(db, "CV/");
   const { children } = props;
   const auth = getAuth();
+  const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState(""); //ambos son vacios para guardar los values con los set
   const [pass, setPass] = useState("");
   const [logueado, setLogueado] = useState(false); // Esto formaria parte del estado inicial
@@ -94,7 +95,7 @@ function UsarContexto(props) {
     console.log("guardo el user:", user);
     const refUsuarios = ref(db, "usuarios/" + user.uid);
     await set(refUsuarios, user);
-    console.log("esto me trae la refusuario", refUsuarios);
+    console.log("esto me trae la refusuario", user);
   };
 
   //Deberia probar con hacer la funcion crear un usuario con un set log .
@@ -103,7 +104,11 @@ function UsarContexto(props) {
       .then(async (userCredential) => {
         const user = userCredential.user;
         console.log("lo que me trae user", user);
-        await guardarUsuario({ email: user.email, uid: user.uid });
+        await guardarUsuario({
+          email: user.email,
+          uid: user.uid,
+          nombre: user.displayName,
+        });
         setLogueado(true);
         // ...
       })
@@ -116,9 +121,30 @@ function UsarContexto(props) {
       });
   };
 
-  const logueoUsuario = () => {};
+  const logueoUsuario = () => {
+    signInWithEmailAndPassword(auth, email, pass)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("Usuario logueado:", user);
+        setLogueado(true);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(errorCode, errorMessage);
+      });
+  };
 
-  const desloguearUsuario = () => {};
+  const desloguearUsuario = () => {
+    signOut(auth)
+      .then(() => {
+        console.log("Usuario deslogueado");
+        setLogueado(false);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
 
   return (
     <>
@@ -139,6 +165,7 @@ function UsarContexto(props) {
           setLogueado,
           setEmail,
           setPass,
+          setNombre,
         }}
       >
         {children}

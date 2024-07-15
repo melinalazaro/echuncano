@@ -6,6 +6,8 @@
   align-content: center;
   justify-content: center;
   flex-direction: column;
+  margin: 0px;
+  padding: 0px;
 }
 .carritoTitle {
   font-size: 25px;

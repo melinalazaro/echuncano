@@ -9,14 +9,9 @@ function EPersonal() {
     <>
       <section className={style.main}>
         <div className={style.contTitulo}>
-          <h1 className={style.TituloEP}>Soy el espacio personal</h1>
-          <img
-            src="https://www.cvmaker.uk/static/711c48da8f89d843cef7c1e9298ef667/126f5/07_what-are-soft-skills-on-a-cv.png"
-            alt=""
-            width={"40px"}
-            height={"40px"}
-          />
+          <h1 className={style.TituloEP}>Bienvenido Pepe!</h1>
         </div>
+
         {!logueado ? <Deslogueado></Deslogueado> : <Logueado></Logueado>}
       </section>
     </>

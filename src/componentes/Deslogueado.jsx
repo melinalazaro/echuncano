@@ -6,7 +6,7 @@ import Contexto from "../contexto/Contexto";
 function Deslogueado(props) {
   const [crear, setCrear] = useState(false);
 
-  const { crearUsuario, setEmail, setPass, logueoUsuario } =
+  const { crearUsuario, setEmail, setPass, setNombre, logueoUsuario } =
     useContext(Contexto);
 
   const handleNoTengo = () => {
@@ -18,11 +18,16 @@ function Deslogueado(props) {
     crearUsuario();
   };
 
-  const handleLog = () => {};
+  const handleLog = () => {
+    logueoUsuario();
+  };
 
   const handleText = (e) => {
     if (e.target.name == "usuario") {
       setEmail(e.target.value);
+      if (e.target.name == "nombre") {
+        setNombre(e.target.value);
+      }
     } else {
       setPass(e.target.value);
     }
@@ -31,10 +36,10 @@ function Deslogueado(props) {
   return (
     <>
       <div className={style.contenedorCrarCuenta}>
-        <h4>Logueate </h4>
         {!crear ? (
           <>
-            <div>
+            <h4>Logueate </h4>
+            <div className={style.divLog}>
               <input
                 type="text"
                 name="usuario"
@@ -52,12 +57,22 @@ function Deslogueado(props) {
               <button onClick={handleLog} className={style.btnDeslogueo}>
                 Logueate
               </button>{" "}
-              <p onClick={handleNoTengo}>Aun no tengo crenta</p>
+              <p onClick={handleNoTengo} className={style.txtlink}>
+                Aun no tengo crenta
+              </p>
             </div>
           </>
         ) : (
           <>
-            <div>
+            <h4>Completá tus datos </h4>
+            <div className={style.divLog}>
+              <input
+                type="text"
+                name="nombre"
+                placeholder="Nombre completo"
+                className={style.imputLog}
+                onChange={handleText}
+              />
               <input
                 type="text"
                 name="usuario"
@@ -78,6 +93,15 @@ function Deslogueado(props) {
             </div>
           </>
         )}
+      </div>
+      <div className={style.divImg}>
+        <img
+          src="https://www.cvmaker.com.mx/shared/images/illustrations/active/BuildCV.svg"
+          alt=""
+          width={"400px"}
+          height={"400px"}
+          className={style.imagen}
+        />
       </div>
     </>
   );

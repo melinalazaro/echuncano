@@ -1,6 +1,6 @@
 .btnDeslogueo {
   background: #ffffff;
-  margin: 4px;
+  margin: 10px;
   font-size: 12px;
   width: 120px;
   height: 35px;
@@ -11,6 +11,27 @@
 .contenedorCrarCuenta {
   width: 300px;
   height: 300px;
+  background: #5c72e1;
+  color: #fcfcfd;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 4px 0px #a3a2a2;
+}
+.imputLog {
+  width: 250px;
+  border-radius: 4px;
+  border: solid 1px white;
+  margin: 4px;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.divLog {
   display: flex;
   align-items: center;
   align-content: center;
@@ -18,11 +39,30 @@
   flex-direction: column;
   flex-wrap: wrap;
   border-radius: 15px;
-  box-shadow: 0px 0px 4px 0px #a3a2a2;
+  margin: 20px;
 }
-.imputLog {
-  border-radius: 4px;
-  border: solid 1px;
-  margin: 4px;
+
+.txtlink {
+  font-weight: 500;
   font-size: 14px;
+  color: #fcfcfd;
+  text-decoration: inherit;
+}
+.txtlink:hover {
+  color: #d1d2f3;
+}
+.divImg {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  align-content: flex-end;
+  justify-content: flex-end;
+  margin: 0px;
+  padding: 0px;
+}
+.imagen {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
