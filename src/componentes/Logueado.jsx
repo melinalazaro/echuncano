@@ -11,9 +11,6 @@ function Logueado() {
   return (
     <>
       <h3>Cntenido Exclusivo</h3>
-      <button onClick={handleDeslogueo} className={style.btnDeslogueo}>
-        Desloguearse
-      </button>
     </>
   );
 }
