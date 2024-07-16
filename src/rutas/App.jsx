@@ -7,7 +7,7 @@ import Somos from "../contenedores/Somos";
 import Layout from "../componentes/Layout";
 import { initializeApp } from "firebase/app";
 import UsarContexto from "../contexto/UsarContexto";
-import CV from "../contenedores/CV";
+import DetalleCV from "../contenedores/DetalleCV";
 import Carrito from "../contenedores/Carrito";
 
 const firebaseConfig = {
@@ -34,7 +34,7 @@ function App() {
             <Route path="/" element={<PHome />}></Route>
             <Route path="/cliente" element={<EPersonal />}></Route>
             <Route path="/productos" element={<Productos />}></Route>
-            <Route path="/productos/*" element={<CV />}></Route>
+            <Route path="/productos/*" element={<DetalleCV />}></Route>
             <Route path="/somos" element={<Somos />}></Route>
             <Route path="/carrito" element={<Carrito />}></Route>
           </Routes>

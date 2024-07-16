@@ -3,7 +3,7 @@ import Contexto from "../contexto/Contexto";
 import style from "../assets/estylos/Logueado.module.css";
 
 function Logueado() {
-  const { desloguearUsuario } = useContext(Contexto);
+  const { desloguearUsuario, email } = useContext(Contexto);
   const handleDeslogueo = () => {
     desloguearUsuario();
   };

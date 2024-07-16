@@ -11,7 +11,6 @@ function Deslogueado(props) {
 
   const handleNoTengo = () => {
     setCrear(!crear);
-    console.log("funcion No tengo cuenta ");
   };
 
   const handleCrear = () => {

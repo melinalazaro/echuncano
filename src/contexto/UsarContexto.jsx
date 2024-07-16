@@ -164,6 +164,7 @@ function UsarContexto(props) {
           logueado,
           setLogueado,
           setEmail,
+          email,
           setPass,
           setNombre,
         }}

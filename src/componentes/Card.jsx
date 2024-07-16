@@ -5,14 +5,22 @@ import { useContext } from "react";
 import Contexto from "../contexto/Contexto";
 
 function Card(props) {
-  const { nombre, descripcion, img, intro, precio } = props;
-  const { agregarCarrito, carrito } = useContext(Contexto);
+  const { id, nombre, descripcion, img, intro, precio } = props;
+  const { agregarCarrito, carrito, curriculums } = useContext(Contexto);
+
   //escucha evento funcion agregar Carrito
   const handleCarrito = () => {
     //esto convierte a mi precio en un numero
     const precioNumerico = parseFloat(precio) || 0;
     // en el atributo precio le indico que debe ser el precio numerico
-    agregarCarrito({ nombre, descripcion, img, intro, precio: precioNumerico });
+    agregarCarrito({
+      id,
+      nombre,
+      descripcion,
+      img,
+      intro,
+      precio: precioNumerico,
+    });
     if (carrito) {
       return carrito.map((item) => {
         if (item.nombre == nombre) {

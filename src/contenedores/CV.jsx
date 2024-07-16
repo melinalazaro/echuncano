@@ -5,6 +5,15 @@ import Contexto from "../contexto/Contexto";
 import style from "../assets/estylos/CV.module.css";
 
 function CV() {
+  const { curriculums } = useContext(Contexto);
+  const { id } = useParams;
+
+  const curriculum = curriculums.find((curriculum) => curriculum.id == id);
+
+  if (!curriculum) {
+    return <div>Producto no encontrado</div>;
+  }
+  const { nombre, descripcion, img, intro, precio } = curriculum;
   return (
     <>
       <div className={style.divImg}>

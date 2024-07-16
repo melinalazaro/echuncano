@@ -21,19 +21,10 @@
 .TituloEP {
   margin: 0px;
   padding: 0px;
+  font-size: 24px;
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
   margin-right: 20px;
-}
-.imagen {
-  display: flex;
-  align-items: flex-end;
-  align-content: flex-end;
-  justify-content: flex-end;
-  margin-right: 30px;
-  margin-left: 500px;
-  margin-bottom: 0px;
-  position: absolute;
 }

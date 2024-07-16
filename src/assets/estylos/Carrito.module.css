@@ -8,6 +8,7 @@
   flex-direction: column;
   margin: 0px;
   padding: 0px;
+  margin-top: 60px;
 }
 .carritoTitle {
   font-size: 25px;
@@ -52,7 +53,6 @@
 }
 .divElemento {
   width: 100%;
-  height: 300px;
   display: flex;
   align-items: center;
   align-content: center;
@@ -62,7 +62,7 @@
 }
 .ulCarrito {
   width: 100%;
-  height: 300px;
+
   display: flex;
   align-items: center;
   align-content: center;
