@@ -13,9 +13,7 @@ function DetalleCV() {
   const curriculum = curriculums.find(
     (curriculum) => curriculum.nombre == nombre
   );
-  console.log("curriculum", curriculum);
-  console.log("Curriculums:", curriculums);
-  console.log("nombre recibido:", nombre);
+
   if (!curriculum) {
     return <div>producto no encontrado</div>;
   }
@@ -24,19 +22,21 @@ function DetalleCV() {
 
   return (
     <>
-      <div className={style.divImg}>
-        <img src={img} alt="" className={style.imgDescr} />
-        <div className={style.titulo}>
-          <h4>{nombre} </h4>
-        </div>
-        <div className={style.descripcion}>
-          <p className={style.txtDescrip}>{descripcion} </p>
-          <h4 className={style.txtDescrip}>{precio} </h4>
-          <div className={style.botonera}>
-            <button className={style.btnCard}>Agregar al carrito</button>
+      <main className={style.main}>
+        <div className={style.divImg}>
+          <img src={img} alt="" className={style.imgDescr} />
+          <div className={style.titulo}>
+            <h4>{nombre} </h4>
+          </div>
+          <div className={style.descripcion}>
+            <p className={style.txtDescrip}>{descripcion} </p>
+            <h4 className={style.txtDescrip}>{precio} </h4>
+            <div className={style.botonera}>
+              <button className={style.btnCard}>Agregar al carrito</button>
+            </div>
           </div>
         </div>
-      </div>
+      </main>
     </>
   );
 }

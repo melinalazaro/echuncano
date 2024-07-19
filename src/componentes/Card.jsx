@@ -22,7 +22,7 @@ function Card(props) {
       precio: precioNumerico,
     });
     if (carrito) {
-      return carrito.map((item) => {
+      return carrito.map((item, index) => {
         if (item.nombre == nombre) {
           return { ...item, quantity: item.quantity + 1 };
         } else {
@@ -40,7 +40,7 @@ function Card(props) {
         <p> $ {precio} </p>
         <div className={style.divBtn}>
           <button className={style.btnCard}>
-            <Link to={"/productos/*"}>Ver Detalle</Link>
+            <Link to={`/productos/${nombre}`}>Ver Detalle</Link>
           </button>
           <button className={style.btnCard} onClick={handleCarrito}>
             Agregar al carrito

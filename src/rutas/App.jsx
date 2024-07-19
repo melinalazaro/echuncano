@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 import "../assets/estylos/App.css";
 import PHome from "../contenedores/PHome";
 import Productos from "../contenedores/Productos";
@@ -34,7 +34,7 @@ function App() {
             <Route path="/" element={<PHome />}></Route>
             <Route path="/cliente" element={<EPersonal />}></Route>
             <Route path="/productos" element={<Productos />}></Route>
-            <Route path="/productos/*" element={<DetalleCV />}></Route>
+            <Route path="/productos/:nombre" element={<DetalleCV />}></Route>
             <Route path="/somos" element={<Somos />}></Route>
             <Route path="/carrito" element={<Carrito />}></Route>
           </Routes>
