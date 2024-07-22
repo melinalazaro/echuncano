@@ -38,7 +38,7 @@ function Header() {
                 <div className={style.contMiCuenta}>
                   <li className={style.elementoNav}>
                     <Link className={style.textNav} to="/cliente">
-                      Mi Cuenta
+                      Loguearme
                     </Link>
                   </li>
                   <li className={style.elementoNav}>

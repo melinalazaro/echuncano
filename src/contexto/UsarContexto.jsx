@@ -93,13 +93,27 @@ function UsarContexto(props) {
     });
   };
 
+  //funcion para vaciar el carrito
+  //en este caso no necesito un payload porque no estoy agregando ningun dato al status.
+  // solo debo indicar la accion a realizar
+  const vaciarCarrito = () => {
+    dispatch({
+      type: "VACIAR_CV_CARRITO",
+    });
+  };
+
   //funciones de Logueo y Deslogueo
 
   //metodo para guardar los usuarios en la base de datos de firebase
   const guardarUsuario = async (user) => {
     console.log("guardo el user:", user);
     const refUsuarios = ref(db, "usuarios/" + user.uid);
-    await set(refUsuarios, user);
+    await set(refUsuarios, {
+      email: user.email || "", // Proporcionar un valor por defecto si es undefined
+      uid: user.uid || "",
+      nombre: user.displayName || "", // Proporcionar un valor por defecto si es undefined
+      haPagado: false, // Inicializamos el campo haPagado en false
+    });
     console.log("esto me trae la refusuario", user);
   };
 
@@ -183,6 +197,7 @@ function UsarContexto(props) {
           email,
           setPass,
           setNombre,
+          vaciarCarrito,
         }}
       >
         {children}

@@ -2,8 +2,12 @@ import style from "../assets/estylos/Carrito.module.css";
 import { useContext } from "react";
 import Contexto from "../contexto/Contexto";
 import TotalCompra from "../componentes/TotalCompra";
+import { getDatabase, ref, update } from "firebase/database";
+import { getAuth } from "firebase/auth";
 function Carrito() {
-  const { carrito, eliminarDelCarrito } = useContext(Contexto);
+  const { carrito, eliminarDelCarrito, logueado } = useContext(Contexto);
+  const db = getDatabase();
+  const auth = getAuth();
 
   const handleEliminar = (nombre) => {
     eliminarDelCarrito(nombre);
