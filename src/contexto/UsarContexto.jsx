@@ -8,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 function UsarContexto(props) {
@@ -149,6 +150,18 @@ function UsarContexto(props) {
         console.error(error.message);
       });
   };
+
+  //funcion de permanencia de usuario
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+      setLogueado(true);
+      // ...
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
 
   return (
     <>
