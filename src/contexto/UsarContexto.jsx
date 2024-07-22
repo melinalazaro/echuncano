@@ -25,7 +25,8 @@ function UsarContexto(props) {
   //Estado incial
   const estadoInicial = {
     curriculums: [],
-    carrito: [],
+    carrito: JSON.parse(localStorage.getItem("carrito")) || [],
+    //al estado de carrito le pongo el getItem del Localstorage para que me traiga lo que esta guardado
     // estos estados son los iniciales para el logueo y deslogueo
   };
 
@@ -38,6 +39,12 @@ function UsarContexto(props) {
     });
     traerCurriculums();
   }, []);
+
+  //utiliso el UseEffect porque traigo de afuera, y uso la funcion de setItel del local storage
+  useEffect(() => {
+    localStorage.setItem("carrito", JSON.stringify(state.carrito));
+  }, [state.carrito]);
+
   //funcion para traer la base de datos desde firebase.
   const traerCurriculums = async () => {
     const res = await axios.get(
@@ -58,9 +65,6 @@ function UsarContexto(props) {
     });
     console.log("traer CV", res.data.results);
   };
-
-  //Funcion para ver el detalle del producto (no me anda)
-  const getCurriculumById = (id) => {};
 
   //Funciones del Carrito de Compras
   //funcion para agregar al carrito
@@ -152,7 +156,6 @@ function UsarContexto(props) {
         value={{
           onValue,
           traerCurriculums,
-          getCurriculumById,
           agregarCarrito,
           eliminarDelCarrito,
           guardarUsuario,

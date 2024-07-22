@@ -27,7 +27,7 @@ const app = initializeApp(firebaseConfig);
 
 function App() {
   return (
-    <BrowserRouter basename="/echuncano">
+    <HashRouter>
       <UsarContexto>
         <Layout>
           <Routes>
@@ -40,7 +40,7 @@ function App() {
           </Routes>
         </Layout>
       </UsarContexto>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
