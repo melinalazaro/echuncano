@@ -5,6 +5,7 @@ const AGREGAR_CV_CARRITO = "AGREGAR_CV_CARRITO";
 const ELIMINAR_CV_CARRITO = "ELIMINAR_CV_CARRITO";
 const MOSTRAR_CV_COMPRADOS = "MOSTRAR_CV_COMPRADOS";
 const VACIAR_CV_CARRITO = "VACIAR_CV_CARRITO";
+const TRAER_CARRITO = "TRAER_CARRITO";
 //const CREAR_USUARIO = "CREAR_USUARIO";
 //const LOGIN_USUARIO = "LOGIN_USUARIO";
 //const DESLOGUEAR_USUARIO = "DESLOGUEAR_USUARIO";
@@ -28,6 +29,11 @@ export default function Reducer(state, action) {
       return {
         ...state,
         carrito: [],
+      };
+    case TRAER_CARRITO:
+      return {
+        ...state,
+        carrito: payload,
       };
 
     //estos son los cases para el loguin

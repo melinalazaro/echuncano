@@ -1,8 +1,9 @@
 import Contexto from "./Contexto";
 import { useEffect, useReducer, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Reducer from "./Reducer";
 import axios from "axios";
-import { getDatabase, ref, onValue, set } from "firebase/database";
+import { getDatabase, ref, onValue, set, update, get } from "firebase/database";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -22,6 +23,7 @@ function UsarContexto(props) {
   const [pass, setPass] = useState("");
   const [logueado, setLogueado] = useState(false); // Esto formaria parte del estado inicial
   const { verifLog } = props;
+  const navigate = useNavigate();
 
   //Estado incial
   const estadoInicial = {
@@ -45,6 +47,20 @@ function UsarContexto(props) {
   useEffect(() => {
     localStorage.setItem("carrito", JSON.stringify(state.carrito));
   }, [state.carrito]);
+
+  useEffect(() => {
+    //funcion de permanencia de usuario
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        setLogueado(true);
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+  });
 
   //funcion para traer la base de datos desde firebase.
   const traerCurriculums = async () => {
@@ -70,27 +86,74 @@ function UsarContexto(props) {
   //Funciones del Carrito de Compras
   //funcion para agregar al carrito
   const agregarCarrito = (item) => {
-    console.log("me agrego al carrito", item);
-    const existeCarrito = state.carrito.some(
-      (producto) => producto.nombre === item.nombre
-    );
-    if (!existeCarrito) {
-      dispatch({
-        type: "AGREGAR_CV_CARRITO",
-        payload: item,
-      });
-      console.log("carrito", state.carrito);
+    if (logueado) {
+      const existeCarrito = state.carrito.some(
+        (producto) => producto.nombre === item.nombre
+      );
+      if (!existeCarrito) {
+        dispatch({
+          type: "AGREGAR_CV_CARRITO",
+          payload: item,
+        });
+        console.log("Producto agregado al carrito local", item);
+      } else {
+        alert("Ya agregaste este producto a tu carrito");
+      }
     } else {
-      alert("ya agregaste este producto a tu carriro");
+      console.log("Debes estar logueado para agregar productos al carrito.");
+      alert("Debes estar logueado para agregar productos al carrito.");
+      navigate("/cliente");
     }
   };
 
   //funcion para eliminar del carrito
-  const eliminarDelCarrito = (nombre) => {
+  const eliminarDelCarrito = async (nombre) => {
     dispatch({
       type: "ELIMINAR_CV_CARRITO",
       payload: { nombre },
     });
+  };
+
+  //Funcion para pagar el carrito
+
+  const pagarCarrito = async () => {
+    if (logueado) {
+      const user = auth.currentUser;
+      if (user) {
+        const userRef = ref(db, `usuarios/${user.uid}`);
+
+        try {
+          // Guarda los productos del carrito en la base de datos
+          await set(ref(db, `usuarios/${user.uid}/compras`), {
+            productos: state.carrito,
+            fecha: new Date().toISOString(),
+          });
+
+          // Vacía el carrito local y en la base de datos
+          await update(userRef, {
+            carrito: [],
+          });
+
+          dispatch({ type: "VACIAR_CV_CARRITO" });
+          console.log("Compra realizada y carrito vacío");
+
+          // Redirige o muestra un mensaje de confirmación  revisar!!!!
+          navigate("/cliente"); // O muestra un mensaje de éxito
+        } catch (error) {
+          console.error(
+            "Error al procesar el pago y guardar en la base de datos: ",
+            error
+          );
+        }
+      } else {
+        console.log("No hay usuario logueado.");
+        navigate("/cliente");
+      }
+    } else {
+      console.log("Debes estar logueado para pagar.");
+      alert("Debes estar logueado para pagar.");
+      navigate("/cliente");
+    }
   };
 
   //funcion para vaciar el carrito
@@ -158,24 +221,16 @@ function UsarContexto(props) {
     signOut(auth)
       .then(() => {
         console.log("Usuario deslogueado");
+        alert(
+          "Al desloguearte los productos que tienen en tu carrito se borrarán y deberés volver a agregarlos la próxima vez que te loguees"
+        );
+        dispatch({ type: "VACIAR_CV_CARRITO" }); // Vaciar el carrito local
         setLogueado(false);
       })
       .catch((error) => {
         console.error(error.message);
       });
   };
-
-  //funcion de permanencia de usuario
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-      setLogueado(true);
-      // ...
-    } else {
-      // User is signed out
-      // ...
-    }
-  });
 
   return (
     <>
@@ -197,6 +252,7 @@ function UsarContexto(props) {
           email,
           setPass,
           setNombre,
+          pagarCarrito,
           vaciarCarrito,
         }}
       >

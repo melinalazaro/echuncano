@@ -5,7 +5,7 @@ import { useContext } from "react";
 import Contexto from "../contexto/Contexto";
 
 function Card(props) {
-  const { id, nombre, descripcion, img, intro, precio } = props;
+  const { id, nombre, descripcion, img, intro, precio, url } = props;
   const { agregarCarrito, carrito, curriculums } = useContext(Contexto);
 
   //escucha evento funcion agregar Carrito
@@ -19,6 +19,7 @@ function Card(props) {
       descripcion,
       img,
       intro,
+      url,
       precio: precioNumerico,
     });
     if (carrito) {
