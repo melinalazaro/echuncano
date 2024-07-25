@@ -4,7 +4,7 @@ function PHome() {
     <>
       <div className={style.main}>
         <div className={style.divTitulo}>
-          <h1>Create CV</h1>
+          <h1 className={style.titulo}>Create CV</h1>
         </div>
         <div className={style.divDescrip}>
           <div className={style.divTxt}>
@@ -24,7 +24,7 @@ function PHome() {
 
           <div className={style.divImg}>
             <img
-              src="https://www.cvmaker.com.mx/shared/images/illustrations/active/blog-category/all.svg"
+              src="https://www.cvmaker.com.mx/shared/images/illustrations/active/Blog.svg"
               alt=""
               className={style.imgHome}
             />

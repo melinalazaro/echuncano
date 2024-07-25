@@ -1,16 +1,12 @@
 import { useContext, useState } from "react";
 import Contexto from "../contexto/Contexto";
 import style from "../assets/estylos/Logueado.module.css";
+import Compras from "./Compras";
 
 function Logueado() {
-  const { desloguearUsuario, email } = useContext(Contexto);
-  const handleDeslogueo = () => {
-    desloguearUsuario();
-  };
-
   return (
     <>
-      <h3>Cntenido Exclusivo</h3>
+      <Compras></Compras>
     </>
   );
 }

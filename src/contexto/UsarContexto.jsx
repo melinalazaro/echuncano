@@ -31,6 +31,7 @@ function UsarContexto(props) {
     carrito: JSON.parse(localStorage.getItem("carrito")) || [],
     //al estado de carrito le pongo el getItem del Localstorage para que me traiga lo que esta guardado
     // estos estados son los iniciales para el logueo y deslogueo
+    compras: [], // Estado para las compras del usuario
   };
 
   const [state, dispatch] = useReducer(Reducer, estadoInicial);
@@ -164,6 +165,29 @@ function UsarContexto(props) {
       type: "VACIAR_CV_CARRITO",
     });
   };
+  // funcion para cargar las compras que el usuario ha hecho
+  const cargarCompras = async () => {
+    if (logueado) {
+      const user = auth.currentUser;
+      if (user) {
+        const userRef = ref(db, `usuarios/${user.uid}/compras`);
+        onValue(userRef, (snapshot) => {
+          const data = snapshot.val();
+          if (data) {
+            dispatch({
+              type: "MOSTRAR_COMPRAS",
+              payload: data.productos || [], // Asegúrate de manejar el caso cuando no haya productos
+            });
+          } else {
+            dispatch({
+              type: "MOSTRAR_COMPRAS",
+              payload: [], // Si no hay compras
+            });
+          }
+        });
+      }
+    }
+  };
 
   //funciones de Logueo y Deslogueo
 
@@ -246,6 +270,7 @@ function UsarContexto(props) {
           desloguearUsuario,
           curriculums: state.curriculums,
           carrito: state.carrito,
+          compras: state.compras,
           logueado,
           setLogueado,
           setEmail,
@@ -254,6 +279,7 @@ function UsarContexto(props) {
           setNombre,
           pagarCarrito,
           vaciarCarrito,
+          cargarCompras,
         }}
       >
         {children}

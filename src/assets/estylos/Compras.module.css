@@ -1,0 +1,51 @@
+.contCompras {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  margin: 0 auto;
+  flex-direction: column;
+}
+.divListCompras {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  margin: 0 auto;
+  flex-direction: column;
+}
+.tusCompras {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+  margin: 0 auto;
+  padding: 20px;
+}
+.uldiv {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  align-content: center;
+  justify-content: center;
+  margin: 0 auto;
+  flex-direction: column;
+  margin-left: 20px;
+}
+.listado {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  align-content: center;
+  justify-content: center;
+  margin: 0 auto;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.liTit {
+  font-size: 20px;
+  font-weight: 600;
+}

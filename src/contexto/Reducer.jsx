@@ -6,6 +6,7 @@ const ELIMINAR_CV_CARRITO = "ELIMINAR_CV_CARRITO";
 const MOSTRAR_CV_COMPRADOS = "MOSTRAR_CV_COMPRADOS";
 const VACIAR_CV_CARRITO = "VACIAR_CV_CARRITO";
 const TRAER_CARRITO = "TRAER_CARRITO";
+const MOSTRAR_COMPRAS = "MOSTRAR_COMPRAS"; // Nuevo tipo
 //const CREAR_USUARIO = "CREAR_USUARIO";
 //const LOGIN_USUARIO = "LOGIN_USUARIO";
 //const DESLOGUEAR_USUARIO = "DESLOGUEAR_USUARIO";
@@ -34,6 +35,11 @@ export default function Reducer(state, action) {
       return {
         ...state,
         carrito: payload,
+      };
+    case MOSTRAR_COMPRAS:
+      return {
+        ...state,
+        compras: payload,
       };
 
     //estos son los cases para el loguin

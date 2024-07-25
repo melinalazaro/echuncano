@@ -10,9 +10,6 @@ function EPersonal() {
       <section className={style.main}>
         {!logueado ? (
           <>
-            <div className={style.contTitulo}>
-              <h1 className={style.TituloEP}>Mi Cuenta </h1>
-            </div>
             <Deslogueado></Deslogueado>
           </>
         ) : (
