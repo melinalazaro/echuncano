@@ -39,7 +39,7 @@ export default function Reducer(state, action) {
     case MOSTRAR_COMPRAS:
       return {
         ...state,
-        compras: payload,
+        compras: payload, // Asumiendo que `compras` es el nuevo estado para almacenar las compras del usuario
       };
 
     //estos son los cases para el loguin

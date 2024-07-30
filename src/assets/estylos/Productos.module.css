@@ -31,17 +31,19 @@
   padding: 0px;
   background: #5d73e2;
   color: aliceblue;
-  padding-left: 30px;
-  font-family: "nougat-script", sans-serif;
+  padding-left: 40px;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  font-style: normal;
 }
 .imgHeader {
-  width: 34%;
+  width: 250px;
+  height: 250px;
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
   padding: 0px;
   margin: 0px;
-  aspect-ratio: 8/5;
+
   object-fit: cover;
 }
