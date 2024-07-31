@@ -1,11 +1,12 @@
 .main {
-  width: 100%;
+  width: 90%;
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: 10px;
+  margin: 0 auto;
 }
 .encabezado {
   width: 100%;
@@ -16,6 +17,7 @@
   justify-content: space-between;
   flex-direction: row;
   margin-bottom: 30px;
+  margin-top: 90px;
   padding-left: 100px;
 }
 .divDescrip {
@@ -32,7 +34,7 @@
 .divTxt {
   width: 1150px;
   height: 300px;
-  font-family: "Roboto Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   line-height: 1.7;
@@ -78,7 +80,7 @@
   align-items: flex-start;
   align-content: flex-start;
   justify-content: flex-start;
-  font-family: "josefin-sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: rgb(80, 80, 80);

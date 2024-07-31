@@ -27,7 +27,9 @@ function Compras() {
                 <p>
                   Completa el model de cv con tus datos en el siguiente link:
                 </p>
-                <a href={compra.url}>Editar mi CV</a>
+                <a className={style.botonEditCV} href={compra.url}>
+                  Editar mi CV
+                </a>
                 <p>Precio: ${compra.precio}</p>
                 <img src={compra.img} alt={compra.nombre} width="100" />
               </li>

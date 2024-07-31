@@ -35,10 +35,10 @@ function Deslogueado(props) {
   return (
     <>
       <div className={style.contenedorCrarCuenta}>
-        {!crear ? (
-          <>
-            <h4>Logueate </h4>
-            <div className={style.divLog}>
+        <div className={style.divLog}>
+          {!crear ? (
+            <>
+              <h4>Logueate </h4>
               <input
                 type="text"
                 name="usuario"
@@ -59,12 +59,11 @@ function Deslogueado(props) {
               <p onClick={handleNoTengo} className={style.txtlink}>
                 Aun no tengo crenta
               </p>
-            </div>
-          </>
-        ) : (
-          <>
-            <h4>Completá tus datos </h4>
-            <div className={style.divLog}>
+            </>
+          ) : (
+            <>
+              <h4>Completá tus datos </h4>
+
               <input
                 type="text"
                 name="nombre"
@@ -89,18 +88,18 @@ function Deslogueado(props) {
               <button onClick={handleCrear} className={style.btnDeslogueo}>
                 Crear cuenta
               </button>
-            </div>
-          </>
-        )}
-      </div>
-      <div className={style.divImg}>
-        <img
-          src="https://www.cvmaker.com.mx/shared/images/illustrations/active/BuildCV.svg"
-          alt=""
-          width={"400px"}
-          height={"400px"}
-          className={style.imagen}
-        />
+            </>
+          )}
+        </div>
+        <div className={style.divImg}>
+          <img
+            src="https://www.cvmaker.com.mx/shared/images/illustrations/active/BuildCV.svg"
+            alt=""
+            width={"300px"}
+            height={"300px"}
+            className={style.imagen}
+          />
+        </div>
       </div>
     </>
   );

@@ -7,6 +7,8 @@
   align-content: center;
   align-items: center;
   position: fixed;
+  top: 0; /* Asegúrate de que el nav esté pegado a la parte superior */
+  z-index: 10; /* Un z-index alto para que el nav esté encima de otros elementos */
 }
 
 .navUl {
@@ -38,7 +40,7 @@
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 .textNav {
-  color: #f58172;
+  color: #25282a;
 }
 .divIconCarrito {
   width: 40px;

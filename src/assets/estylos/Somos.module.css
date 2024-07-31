@@ -1,10 +1,90 @@
 .main {
-  width: 100%;
-  height: 100vh;
+  width: 90%;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 0px;
+  margin-top: 100px;
+}
+.bannerSomos {
+  width: 100%;
+  height: 300px;
+  background: #fae6ad;
+  overflow: hidden; /* Oculta cualquier parte de la imagen que se desborde */
+  position: relative; /* Para posicionar correctamente la imagen */
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  margin-bottom: 50px;
+  z-index: 1; /* Un z-index menor que el nav */
+}
+.banner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  object-fit: cover; /* Asegura que la imagen cubra el contenedor */
+  object-position: center; /* Ajusta esto para mover la imagen */
+
+  top: 0;
+  left: 0;
+}
+.secTit {
+  margin-left: 50px;
+  color: whitesmoke;
+}
+.tit {
+  font-size: 50px;
+  text-shadow: 1px 1px 2px rgba(136, 136, 136, 0.5);
+}
+.parrafos {
+  font-family: "Poppins", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  line-height: 1.7;
+  letter-spacing: 1.5px;
+  font-size: 18px;
+  font-weight: 300;
+}
+.secSubtit {
+  width: 100%;
+  height: 80px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+  margin-top: 60px;
+  color: rgb(64, 64, 64);
+}
+.contParEImg {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+}
+.imgMision {
+  display: flex;
+}
+.parrafoEImg {
+  width: 700px;
+  font-family: "Poppins", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  line-height: 1.7;
+  letter-spacing: 1.5px;
+  font-size: 18px;
+  font-weight: 300;
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: flex-start;
 }

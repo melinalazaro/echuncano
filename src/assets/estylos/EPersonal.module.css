@@ -5,7 +5,7 @@
   align-content: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 80px;
+  margin-top: 100px;
   margin-bottom: 50px;
 }
 .contTitulo {
@@ -21,10 +21,16 @@
 .TituloEP {
   margin: 0px;
   padding: 0px;
-  font-size: 20px;
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
   margin-right: 20px;
+  font-family: "Poppins", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  line-height: 1.7;
+  letter-spacing: 1.5px;
+  font-size: 18px;
+  font-weight: 500;
 }
