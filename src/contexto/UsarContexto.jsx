@@ -2,6 +2,7 @@ import Contexto from "./Contexto";
 import { useEffect, useReducer, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Reducer from "./Reducer";
+import Swal from "sweetalert2";
 import axios from "axios";
 import { getDatabase, ref, onValue, set, update, get } from "firebase/database";
 import {
@@ -98,11 +99,19 @@ function UsarContexto(props) {
         });
         console.log("Producto agregado al carrito local", item);
       } else {
-        alert("Ya agregaste este producto a tu carrito");
+        Swal.fire({
+          title: "ups",
+          text: "Debes loguearte para agregar elementos a tu carrito",
+          icon: "warning",
+        });
       }
     } else {
       console.log("Debes estar logueado para agregar productos al carrito.");
-      alert("Debes estar logueado para agregar productos al carrito.");
+      Swal.fire({
+        title: "ups",
+        text: "Debes loguearte para agregar elementos a tu carrito",
+        icon: "warning",
+      });
       navigate("/cliente");
     }
   };
@@ -137,6 +146,14 @@ function UsarContexto(props) {
 
           dispatch({ type: "VACIAR_CV_CARRITO" });
           console.log("Compra realizada y carrito vacío");
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Felicitaciones!",
+            text: "Tu compra se ha realizado con éxito",
+            showConfirmButton: false,
+            timer: 2000,
+          });
 
           // Redirige o muestra un mensaje de confirmación  revisar!!!!
           navigate("/cliente"); // O muestra un mensaje de éxito
