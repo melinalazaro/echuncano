@@ -1,3 +1,9 @@
+#main {
+  width: 100%;
+  height: 100vh;
+  margin: 0; /* Aseguramos que no haya margen por defecto */
+  overflow-x: hidden; /* Ocultamos el desbordamiento horizontal para evitar la barra negra */
+}
 .btnDeslogueo {
   background: #ffffff;
   margin: 10px;
@@ -7,30 +13,34 @@
   padding: 0px;
   border-radius: 10px;
   box-shadow: 1px 1px 10px 0px #a3a2a2;
+  cursor: pointer; /* Indica que es clickeable */
 }
 .contenedorCrarCuenta {
-  width: 800px;
+  width: 90%;
+  max-width: 800px; /* Máximo ancho en pantallas grandes */
   background: #5c72e1;
   color: #fcfcfd;
   display: flex;
   align-items: center;
-  align-content: center;
   justify-content: space-between;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* Evita que los elementos se envuelvan en una nueva línea */
   margin: 30px auto; /* Center horizontally */
-  margin-top: 30px;
   border-radius: 15px;
   box-shadow: 0px 0px 4px 0px #a3a2a2;
   padding: 20px; /* Add padding for better spacing */
+  gap: 20px; /* Espaciado entre los elementos */
 }
 .imputLog {
+  width: 100%;
+  max-width: 250px; /* Máximo ancho en pantallas grandes */
   width: 250px;
   border-radius: 4px;
   border: solid 1px white;
   margin: 4px;
   font-size: 14px;
   margin-bottom: 8px;
+  padding: 8px; /* Agregar relleno interno */
 }
 .divLog {
   display: flex;
@@ -38,7 +48,7 @@
   align-content: center;
   justify-content: center;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* Evita que los elementos se envuelvan en una nueva línea */
   border-radius: 15px;
   margin: 20px;
 }
@@ -47,26 +57,40 @@
   font-weight: 500;
   font-size: 14px;
   color: #fcfcfd;
-  text-decoration: inherit;
+  text-decoration: none;
+  cursor: pointer; /* Indica que es clickeable */
 }
 .txtlink:hover {
   color: #d1d2f3;
 }
 .divImg {
-  width: 100%;
   display: flex;
-  align-items: flex-end;
-  align-content: flex-end;
-  justify-content: flex-end;
-  margin: 0px;
-  padding: 0px;
+  align-items: center;
+  justify-content: center;
   width: 300px; /* Fixed width for the image container */
 }
 .imagen {
   max-width: 100%;
   height: auto;
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .contenedorCrarCuenta {
+    flex-direction: column; /* Cambia la dirección a columna en pantallas pequeñas */
+    align-items: center; /* Centra el contenido */
+  }
+
+  .divImg {
+    width: 100%; /* La imagen ocupa el ancho completo */
+    margin-top: 20px; /* Espacio superior para separar la imagen del contenido */
+  }
+
+  .btnDeslogueo {
+    width: 100%; /* Botones ocupan el ancho completo en pantallas pequeñas */
+  }
+
+  .imputLog {
+    max-width: 100%; /* Los inputs ocupan el ancho completo en pantallas pequeñas */
+  }
 }

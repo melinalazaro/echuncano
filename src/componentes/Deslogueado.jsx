@@ -33,75 +33,77 @@ function Deslogueado(props) {
   };
 
   return (
-    <>
-      <div className={style.contenedorCrarCuenta}>
-        <div className={style.divLog}>
-          {!crear ? (
-            <>
-              <h4>Logueate </h4>
-              <input
-                type="text"
-                name="usuario"
-                placeholder="Mi email"
-                className={style.imputLog}
-                onChange={handleText}
-              />
-              <input
-                type="password"
-                name="contraseña"
-                placeholder="Mi contraseña"
-                className={style.imputLog}
-                onChange={handleText}
-              />
-              <button onClick={handleLog} className={style.btnDeslogueo}>
-                Logueate
-              </button>{" "}
-              <p onClick={handleNoTengo} className={style.txtlink}>
-                Aun no tengo crenta
-              </p>
-            </>
-          ) : (
-            <>
-              <h4>Completá tus datos </h4>
+    <main>
+      <>
+        <div className={style.contenedorCrarCuenta}>
+          <div className={style.divLog}>
+            {!crear ? (
+              <>
+                <h4>Logueate </h4>
+                <input
+                  type="text"
+                  name="usuario"
+                  placeholder="Mi email"
+                  className={style.imputLog}
+                  onChange={handleText}
+                />
+                <input
+                  type="password"
+                  name="contraseña"
+                  placeholder="Mi contraseña"
+                  className={style.imputLog}
+                  onChange={handleText}
+                />
+                <button onClick={handleLog} className={style.btnDeslogueo}>
+                  Logueate
+                </button>{" "}
+                <p onClick={handleNoTengo} className={style.txtlink}>
+                  Aun no tengo crenta
+                </p>
+              </>
+            ) : (
+              <>
+                <h4>Completá tus datos </h4>
 
-              <input
-                type="text"
-                name="nombre"
-                placeholder="Nombre completo"
-                className={style.imputLog}
-                onChange={handleText}
-              />
-              <input
-                type="text"
-                name="usuario"
-                placeholder="Mi email"
-                className={style.imputLog}
-                onChange={handleText}
-              />
-              <input
-                type="password"
-                name="contraseña"
-                placeholder="Mi contraseña"
-                className={style.imputLog}
-                onChange={handleText}
-              />
-              <button onClick={handleCrear} className={style.btnDeslogueo}>
-                Crear cuenta
-              </button>
-            </>
-          )}
+                <input
+                  type="text"
+                  name="nombre"
+                  placeholder="Nombre completo"
+                  className={style.imputLog}
+                  onChange={handleText}
+                />
+                <input
+                  type="text"
+                  name="usuario"
+                  placeholder="Mi email"
+                  className={style.imputLog}
+                  onChange={handleText}
+                />
+                <input
+                  type="password"
+                  name="contraseña"
+                  placeholder="Mi contraseña"
+                  className={style.imputLog}
+                  onChange={handleText}
+                />
+                <button onClick={handleCrear} className={style.btnDeslogueo}>
+                  Crear cuenta
+                </button>
+              </>
+            )}
+          </div>
+          <div className={style.divImg}>
+            <img
+              src="https://www.cvmaker.com.mx/shared/images/illustrations/active/BuildCV.svg"
+              alt=""
+              width={"300px"}
+              height={"300px"}
+              className={style.imagen}
+            />
+          </div>
         </div>
-        <div className={style.divImg}>
-          <img
-            src="https://www.cvmaker.com.mx/shared/images/illustrations/active/BuildCV.svg"
-            alt=""
-            width={"300px"}
-            height={"300px"}
-            className={style.imagen}
-          />
-        </div>
-      </div>
-    </>
+      </>
+    </main>
   );
 }
 

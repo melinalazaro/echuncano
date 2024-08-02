@@ -16,7 +16,6 @@ function Compras() {
             <img
               src="https://www.cvmaker.com.mx/shared/images/illustrations/active/blog-category/all.svg"
               alt="imagen de tus compras"
-              height={470}
             />
           </div>
 
@@ -31,7 +30,12 @@ function Compras() {
                   Editar mi CV
                 </a>
                 <p>Precio: ${compra.precio}</p>
-                <img src={compra.img} alt={compra.nombre} width="100" />
+                <img
+                  src={compra.img}
+                  alt={compra.nombre}
+                  width="100"
+                  className={style.imgPequeDescrip}
+                />
               </li>
             ))}
           </ul>

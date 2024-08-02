@@ -6,49 +6,51 @@
   justify-content: center;
   margin: 0 auto;
   flex-direction: column;
+  padding: 20px;
 }
 .divListCompras {
   width: 100%;
   display: flex;
   align-items: center;
-  align-content: center;
   justify-content: center;
-  margin: 0 auto;
   flex-direction: column;
 }
 .tusCompras {
   width: 100%;
   display: flex;
   align-items: center;
-  align-content: center;
-  justify-content: space-around;
-  margin: 0 auto;
+  justify-content: space-between;
+  flex-direction: column;
   padding: 20px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
+
+.tusCompras img {
+  max-width: 100%;
+  height: auto;
+}
+
 .uldiv {
   width: 100%;
   display: flex;
   align-items: flex-start;
-  align-content: center;
   justify-content: center;
-  margin: 0 auto;
   flex-direction: column;
-  margin-left: 20px;
 }
 .listado {
   width: 100%;
   display: flex;
   align-items: flex-start;
-  align-content: center;
   justify-content: center;
-  margin: 0 auto;
   flex-direction: column;
   margin-bottom: 50px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
 }
 .liTit {
   font-size: 20px;
   font-weight: 600;
+  margin-bottom: 10px; /* se agrega para que no se solape el boton */
 }
 .botonEditCV {
   font-weight: 500;
@@ -58,4 +60,60 @@
 
 .botonEditCV:hover {
   color: #f58172;
+}
+/* Responsive Styles */
+@media (min-width: 768px) {
+  .tusCompras {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  }
+
+  .uldiv {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: center;
+    margin: 0 auto;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+
+  .listado {
+    width: 45%;
+    margin: 10px;
+  }
+
+  .tusCompras img {
+    width: 40%; /* Ajusta este valor según sea necesario */
+    height: auto;
+  }
+
+  .tusCompras h1 {
+    width: 50%; /* Ajusta este valor según sea necesario */
+  }
+}
+
+@media (max-width: 768px) {
+  .tusCompras {
+    flex-direction: column;
+  }
+
+  .tusCompras h1 {
+    width: 50%; /* Ajusta este valor según sea necesario */
+  }
+  .tusCompras img {
+    width: 40%; /* Ajusta este valor según sea necesario */
+    height: auto;
+  }
+  .listado img {
+    width: 30%;
+  }
 }

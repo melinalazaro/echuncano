@@ -7,6 +7,7 @@
   justify-content: center;
   flex-direction: column;
   margin-top: 100px;
+  margin-bottom: 50px;
 }
 .bannerSomos {
   width: 100%;
@@ -24,28 +25,21 @@
 }
 .banner {
   height: 100%;
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
   object-fit: cover; /* Asegura que la imagen cubra el contenedor */
   object-position: center; /* Ajusta esto para mover la imagen */
-
-  top: 0;
-  left: 0;
 }
 .secTit {
   margin-left: 50px;
   color: whitesmoke;
+  z-index: 2; /* Asegura que el título esté sobre la imagen */
 }
 .tit {
   font-size: 50px;
   text-shadow: 1px 1px 2px rgba(136, 136, 136, 0.5);
 }
-.parrafos {
+.parrafos,
+.parrafoEImg {
   font-family: "Poppins", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
   line-height: 1.7;
   letter-spacing: 1.5px;
   font-size: 18px;
@@ -72,19 +66,73 @@
   justify-content: space-between;
 }
 .imgMision {
-  display: flex;
+  width: 300px;
+  max-width: 80%;
+  height: auto;
+  margin-left: 70px;
 }
 .parrafoEImg {
-  width: 700px;
-  font-family: "Poppins", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  line-height: 1.7;
-  letter-spacing: 1.5px;
-  font-size: 18px;
-  font-weight: 300;
-  display: flex;
-  align-items: flex-start;
-  align-content: flex-start;
-  justify-content: flex-start;
+  width: 60%;
+}
+/* Media Queries */
+@media (max-width: 1024px) {
+  .bannerSomos {
+    height: 250px;
+  }
+  .tit {
+    font-size: 40px;
+  }
+  .parrafos,
+  .parrafoEImg {
+    font-size: 16px;
+  }
+  .parrafoEImg {
+    width: 40%;
+  }
+}
+
+@media (max-width: 768px) {
+  .bannerSomos {
+    height: 200px;
+  }
+  .tit {
+    font-size: 30px;
+  }
+  .parrafos,
+  .parrafoEImg {
+    font-size: 14px;
+  }
+  .contParEImg {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .parrafoEImg {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .imgMision {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .bannerSomos {
+    height: 150px;
+  }
+  .tit {
+    font-size: 24px;
+  }
+  .parrafos,
+  .parrafoEImg {
+    font-size: 12px;
+  }
+  .secSubtit {
+    height: auto;
+    margin-top: 30px;
+  }
+  .imgMision {
+    width: 50%;
+    height: auto;
+  }
 }

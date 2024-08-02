@@ -1,17 +1,18 @@
 .sectCarrito {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh; /* Cambiar height a min-height para mejor manejo del contenido */
   display: flex;
   align-items: center;
-  align-content: center;
-  justify-content: center;
+  justify-content: flex-start; /* Alinea los elementos en la parte superior */
   flex-direction: column;
-  margin: 0px;
-  padding: 0px;
-  margin-top: 60px;
+  padding: 20px;
+  margin-top: 80px;
+  box-sizing: border-box; /* Incluye el padding en el cálculo del ancho */
 }
 .carritoTitle {
-  font-size: 25px;
+  font-size: 28px; /* Aumenta un poco el tamaño del texto */
+  font-weight: bold; /* Aumenta el peso para destacarlo */
+  margin-bottom: 20px; /* Añade espacio debajo del título */
 }
 
 .nombreElemento {
@@ -20,49 +21,42 @@
 }
 .contElementos {
   width: 100%;
-  height: 100vh;
   display: flex;
   align-items: center;
-  align-content: center;
-  justify-content: center;
   flex-direction: column;
-  margin: 0px;
-  padding: 0px;
+  margin-top: 20px; /* Espacio superior para separar del título */
 }
 
 .btnEliminar {
   background: #ffffff;
   margin: 4px;
   font-size: 12px;
-  width: 120px;
+  width: 100px;
   height: 35px;
   padding: 0px;
   border-radius: 10px;
   box-shadow: 1px 1px 10px 0px #a3a2a2;
+  cursor: pointer; /* Añade un cursor pointer para indicar que es clickeable */
+  border: none; /* Elimina el borde predeterminado */
 }
 .totalCarrito {
   width: 100%;
   height: 80px;
   display: flex;
   align-items: center;
-  align-content: center;
   justify-content: center;
-  flex-direction: column;
-  margin: 0px;
-  padding: 0px;
+  margin-top: 20px; /* Añade espacio superior para separar de los elementos del carrito */
 }
 .divElemento {
   width: 100%;
   display: flex;
   align-items: center;
-  align-content: center;
   justify-content: center;
   flex-direction: column;
-  flex-wrap: wrap;
+  margin-bottom: 20px; /* Añade espacio debajo de cada elemento */
 }
 .ulCarrito {
   width: 100%;
-
   display: flex;
   align-items: center;
   align-content: center;
@@ -113,4 +107,38 @@
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0;
+}
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .sectCarrito {
+    padding: 10px;
+  }
+
+  .totalCarrito {
+    margin-top: 20px; /* Añade espacio superior para separar del contenido del carrito */
+    display: flex;
+    justify-content: flex-end; /* Alinea el contenido al final del contenedor */
+  }
+
+  .btnEliminar {
+    position: relative; /* Usa posición relativa para situar el botón */
+    margin: 0px; /* Ajusta el margen para colocar el botón en la esquina inferior derecha */
+  }
+
+  .liCarrito {
+    width: 100%;
+    margin: 0;
+    justify-content: space-around;
+    flex-direction: column; /* Ajusta la dirección de los elementos del carrito para pantallas pequeñas */
+    align-items: center; /* Alinea los elementos a la izquierda */
+  }
+
+  .groupTxtElemento {
+    width: 50%; /* Asegura que el grupo de textos ocupe el 100% del ancho */
+  }
+
+  .nombreElemento,
+  .precioElemento {
+    width: 100%; /* Ajusta el ancho para mejor distribución en pantallas pequeñas */
+  }
 }

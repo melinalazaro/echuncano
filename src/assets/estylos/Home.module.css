@@ -5,12 +5,13 @@
   align-content: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 10px;
+  margin-top: 10px auto 0 auto; /* Ajusté el margen superior y central */
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 .encabezado {
   width: 100%;
-  height: 30vph;
+  height: auto; /* Cambié altura fija a auto */
   display: flex;
   align-items: center;
   align-content: center;
@@ -19,10 +20,11 @@
   margin-bottom: 30px;
   margin-top: 90px;
   padding-left: 100px;
+  flex-wrap: wrap;
 }
 .divDescrip {
   width: 100%;
-  height: 400px;
+  height: auto; /* Cambié altura fija a auto para que se ajuste al contenido */
   margin: 0px;
   padding: 20px;
   display: flex;
@@ -32,8 +34,8 @@
   flex-direction: row;
 }
 .divTxt {
-  width: 1150px;
-  height: 300px;
+  width: 100%; /* Cambié a 100% para que ocupe todo el ancho disponible */
+  height: auto; /* Cambié altura fija a auto */
   font-family: "Poppins", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -43,23 +45,27 @@
   font-weight: 300;
 }
 .divImg {
-  width: 380px;
-  height: 380px;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .imgHome {
-  width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
+  display: flex;
+  flex-wrap: wrap;
 }
 .divTitulo {
   width: 50%;
-  height: 30vph;
+  height: auto; /* Cambié altura fija a auto */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   align-content: flex-start;
   justify-content: flex-start;
   margin-left: 50px;
+  flex-wrap: wrap;
 }
 .titulo {
   width: 100%;
@@ -84,4 +90,78 @@
   font-weight: 400;
   font-style: normal;
   color: rgb(80, 80, 80);
+}
+/* Media Queries para responsive design */
+@media (max-width: 1200px) {
+  .divTxt {
+    font-size: 16px;
+  }
+
+  .titulo {
+    font-size: 60px;
+  }
+
+  .subtitulo {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .encabezado {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    margin-top: 60px;
+  }
+
+  .divImg {
+    width: 100%;
+    height: auto; /* Ajusta la altura automáticamente */
+    display: flex;
+    justify-content: center; /* Centra la imagen horizontalmente */
+  }
+
+  .imgHome {
+    width: 70%; /* Ajusta el tamaño de la imagen */
+    height: auto; /* Mantiene la proporción de aspecto */
+  }
+
+  .divTitulo {
+    width: 100%;
+    align-items: center;
+    margin-left: 0;
+    text-align: center;
+    padding: 20px; /* Añade un poco de relleno para mejorar la apariencia */
+  }
+
+  .divDescrip {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .divTxt {
+    font-size: 14px;
+  }
+
+  .titulo {
+    font-size: 40px;
+  }
+
+  .subtitulo {
+    font-size: 20px;
+  }
+
+  .divImg {
+    width: 100%;
+    height: auto; /* Ajusta la altura automáticamente */
+    display: flex;
+    justify-content: center; /* Centra la imagen horizontalmente */
+  }
+
+  .imgHome {
+    width: 80%; /* Ajusta el tamaño de la imagen */
+    height: auto; /* Mantiene la proporción de aspecto */
+  }
 }

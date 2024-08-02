@@ -101,7 +101,7 @@ function UsarContexto(props) {
       } else {
         Swal.fire({
           title: "ups",
-          text: "Debes loguearte para agregar elementos a tu carrito",
+          text: "Ya agregaste este producto a tu carrito",
           icon: "warning",
         });
       }
